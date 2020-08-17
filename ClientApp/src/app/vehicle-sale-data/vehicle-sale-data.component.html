@@ -1,0 +1,26 @@
+<p *ngIf="!response"><em>Loading...</em></p>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="response">
+   <tbody>
+    <tr *ngFor="let item of response">
+      <td rowspan="item.result.length">
+        {{ item.vehicle }}
+      </td>
+      <td>
+    <tr>
+      <td>Deal Number</td>
+      <td>Customer Name</td>
+      <td>Dealership Name</td>
+      <td>Price</td>
+      <td>Date</td>
+    </tr>
+       <tr *ngFor="let subItem of item.result">
+      <td>{{ subItem.dealNumber }}</td>
+      <td>{{ subItem.customerName }}</td>
+      <td>{{ subItem.dealershipName }}</td>
+      <td>CAD${{ subItem.price | number:'1.2-2' }}</td>
+      <td>{{ subItem.date | date : 'shortDate' }}</td>
+    </tr>
+    </td>
+    </tr>
+  </tbody>
+</table>
